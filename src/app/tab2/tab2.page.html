@@ -1,28 +1,15 @@
-<ion-header [translucent]="true">
-	<ion-toolbar>
-		<ion-title>
-			Gym Club
-		</ion-title>
-		<!-- <ion-buttons slot="primary">
-			<ion-icon slot="end" style="color: green;" name="checkmark-circle-outline"></ion-icon>
-			<ion-icon slot="end" style="color: red;" name="close-circle-outline"></ion-icon>
-			<ion-icon slot="end" style="color: orange;" name="alert-circle-outline"></ion-icon>
-		</ion-buttons> -->
-	</ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-	<ion-header collapse="condense">
+<ion-header [translucent]="true" collapse="condense">
 		<ion-toolbar>
-			<ion-title size="large">
-				Gym Club
-			</ion-title>
+			<ion-label slot="secondary">
+				<strong>Gym Club</strong>
+			</ion-label>
 			<ion-buttons slot="primary">
 				<span style="text-transform: capitalize">{{openStatus.status}}</span>
 				<ion-icon slot="end" [ngClass]="openStatus.color" name="{{openStatus.icon}}"></ion-icon>
 			</ion-buttons>
 		</ion-toolbar>
-	</ion-header>
+</ion-header>
 
+<ion-content [fullscreen]="true">
 	<app-home></app-home>
 </ion-content>
