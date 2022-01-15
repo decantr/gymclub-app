@@ -1,7 +1,12 @@
 <ion-header [translucent]="true" collapse="condense">
 		<ion-toolbar>
 			<ion-label slot="secondary">
-				<strong>Gym Club</strong>
+				<ion-chip>
+					<ion-avatar>
+						<img src="{{user.profilePicture}}">
+					</ion-avatar>
+					<ion-label>{{user.name}}</ion-label>
+				</ion-chip>
 			</ion-label>
 			<ion-buttons slot="primary">
 				<span style="text-transform: capitalize">{{openStatus.status}}</span>

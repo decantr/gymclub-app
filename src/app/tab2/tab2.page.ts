@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user';
+import { UserService } from '../services/user.service';
 
 @Component({
 	selector: 'app-tab2',
@@ -7,8 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab2Page implements OnInit {
 	public openStatus: {icon: string, color: string, status: string}
+  public user: User;
 
-	constructor() { }
+	constructor(
+    private userService: UserService,
+	) {
+    this.user = this.userService.getActiveUser();
+	}
 
 	ngOnInit() {
 		this.getOpenStatus();

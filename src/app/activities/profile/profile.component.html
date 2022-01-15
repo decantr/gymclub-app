@@ -1,0 +1,61 @@
+<ion-card>
+  <ion-card-header class='image'>
+    <ion-img [src]="user.profilePicture"></ion-img>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-card-title>{{user.name}}</ion-card-title>
+    <ion-card-subtitle>Member #{{user.id}}</ion-card-subtitle>
+  </ion-card-content>
+</ion-card>
+
+<!-- <ion-card>
+  <ion-card-content>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="{{user.profilePicture}}">
+      </ion-avatar>
+      <ion-label style="font-size: larger;">{{user.name}}</ion-label>
+      <ion-label style="font-size: smaller;" slot="end">Member</ion-label>
+    </ion-item>
+  </ion-card-content>
+</ion-card> -->
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Contact</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item>
+      <ion-label slot="start">Email</ion-label>
+      <ion-input type="text" [ngModel]="user.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">Phone</ion-label>
+      <ion-input type="text" [ngModel]="user.contact_number"></ion-input>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>About</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item>
+      <ion-label slot="start">Date of Birth</ion-label>
+      <ion-input type="text" [value]="user.dob | date: 'YYYY-MM-dd'"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">Address</ion-label>
+      <ion-input type="text" [ngModel]="user.address.line_1"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">City</ion-label>
+      <ion-input type="text" [ngModel]="user.address.line_2"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">Post Code</ion-label>
+      <ion-input type="text" [ngModel]="user.address.postcode"></ion-input>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
