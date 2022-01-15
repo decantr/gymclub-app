@@ -1,0 +1,7 @@
+{
+  "name": "Gym Club App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
