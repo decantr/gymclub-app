@@ -27,4 +27,8 @@ export class UserService {
   public getActiveUser(): User {
     return this.user;
   }
+
+  public getId(): number {
+    return this.user.id;
+  }
 }

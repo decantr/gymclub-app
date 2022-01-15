@@ -28,3 +28,13 @@
 .toolbar-ios {
   padding-top: env(safe-area-inset-top);
 }
+
+ion-label.small {
+  font-weight: 400;
+}
+
+div.center-children {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

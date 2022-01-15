@@ -1,34 +1,67 @@
-<ion-list>
-  <ion-card>
-    <ion-card-header>
-      <ion-item lines="none" class="ion-no-padding" detail>
-        <ion-icon slot="start" name="water-outline"></ion-icon>
-        <ion-label>
-          Book a pool slot
-        </ion-label>
-      </ion-item>
-    </ion-card-header>
-  </ion-card>
+<ion-list *ngIf="!booking.date_from">
+  <div *ngIf="!booking.type">
+    <ion-card>
+      <ion-card-header>
+        <ion-item (click)="editBooking(null, 'type', 'swim')" lines="none" class="ion-no-padding" detail>
+          <ion-icon slot="start" name="water-outline"></ion-icon>
+          <ion-label>
+            Book a pool slot
+          </ion-label>
+        </ion-item>
+      </ion-card-header>
+    </ion-card>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-item lines="none" class="ion-no-padding" detail>
-        <ion-icon slot="start" name="people-outline"></ion-icon>
-        <ion-label>
-          Book with an Instructor
-        </ion-label>
-      </ion-item>
-    </ion-card-header>
-  </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-item (click)="editBooking(null, 'type', 'instructor')" lines="none" class="ion-no-padding" detail>
+          <ion-icon slot="start" name="people-outline"></ion-icon>
+          <ion-label>
+            Book with an Instructor
+          </ion-label>
+        </ion-item>
+      </ion-card-header>
+    </ion-card>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-item lines="none" class="ion-no-padding" detail>
-        <ion-icon slot="start" name="business-outline"></ion-icon>
-        <ion-label>
-          Book a Location
-        </ion-label>
+    <ion-card>
+      <ion-card-header>
+        <ion-item (click)="editBooking(null, 'type', 'location')" lines="none" class="ion-no-padding" detail>
+          <ion-icon slot="start" name="business-outline"></ion-icon>
+          <ion-label>
+            Book a Location
+          </ion-label>
+        </ion-item>
+      </ion-card-header>
+    </ion-card>
+  </div>
+  <div *ngIf="booking.type && 'swim'">
+    <ion-card>
+      <ion-item class="calander" (change)="editBooking($event, 'date_from')" lines="none" class="ion-no-padding">
+        <ion-datetime presentation="date" [min]="now" [max]="" [value]="now">
+        </ion-datetime>
       </ion-item>
-    </ion-card-header>
-  </ion-card>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-item (click)="editBooking(null, 'date_from', 'next')" lines="none" class="ion-no-padding" detail>
+          <ion-icon slot="start" name="calendar-clear-outline"></ion-icon>
+          <ion-label>Next Available Slot</ion-label>
+        </ion-item>
+      </ion-card-header>
+    </ion-card>
+    <ion-button *ngIf="booking.type" (click)="editBooking(null, 'type', null)" expand="block">Back</ion-button>
+  </div>
 </ion-list>
+
+<ion-card *ngIf="booking.date_to">
+  <ion-card-header>
+    <ion-card-title>Confirmed!</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-label>Your {{booking.type}} session is confirmed for {{getHumanDate(booking.date_from)}} for an hour</ion-label>
+  </ion-card-content>
+  <div class="center-children">
+    <ion-button (click)="exportEvent()">Add to Calendar</ion-button>
+  </div>
+</ion-card>
+
+<ion-label>{{out}}</ion-label>
