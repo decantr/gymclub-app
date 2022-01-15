@@ -1,0 +1,16 @@
+ion-card {
+  padding: 1em;
+
+  ion-card-title{
+    display: flex;
+    justify-content: center;
+  }
+
+  ion-img {
+    height: 8em;
+  }
+
+  canvas {
+    margin: -1em;
+  }
+}
