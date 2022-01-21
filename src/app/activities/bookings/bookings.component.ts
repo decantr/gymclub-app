@@ -14,6 +14,7 @@ export class BookingsComponent implements OnInit {
   public bookings: Booking[] = [];
   public newBooking: Booking;
   public now: string;
+  public min: string;
   public out: string ='';
 
   constructor(
@@ -23,6 +24,7 @@ export class BookingsComponent implements OnInit {
 
   ngOnInit() {
     this.now = this.bookingService.getOpen(new Date()).toISOString();
+    this.min = new Date(this.now).toISOString();
 
     this.resetBooking();
   }

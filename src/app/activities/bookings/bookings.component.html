@@ -53,7 +53,7 @@
   <div *ngIf="newBooking.type && 'swim'">
     <ion-card>
       <ion-item (change)="editBooking($event, 'date_from')" lines="none" class="ion-no-padding calander">
-        <ion-datetime [min]="now" [max]="" [(ngModel)]="now" locale="en-GB-u-hc-h14" minuteValues="00" hourValues="6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21">
+        <ion-datetime [min]="min" [max]="" [(ngModel)]="now" locale="en-GB-u-hc-h14" minuteValues="00" hourValues="6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21">
         </ion-datetime>
       </ion-item>
       <ion-button (click)="editBooking(null, 'date_from', now)">
