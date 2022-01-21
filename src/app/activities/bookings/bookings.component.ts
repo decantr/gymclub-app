@@ -35,17 +35,10 @@ export class BookingsComponent implements OnInit {
       this.out = JSON.stringify(event);
     } else {
       if (key === 'date_from' || key === 'date_to' ) {
-        if (value === 'next') {
-          const date = this.bookingService.getNext(this.newBooking);
-          this.newBooking.date_from = date;
+          const date = value === 'next' ? this.bookingService.getNext(this.newBooking) : new Date(value);
+          this.newBooking.date_from = new Date(date);
           date.setHours(date.getHours() + 1);
           this.newBooking.date_to = date;
-        } else {
-          const date = new Date(value);
-          this.newBooking.date_from = new Date(value);
-          date.setHours(date.getHours() + 1);
-          this.newBooking.date_to = date;
-        }
       } else {
         this.newBooking[key] = value;
       }
