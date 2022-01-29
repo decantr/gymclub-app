@@ -1,8 +1,14 @@
-  <ion-header class="toolbar-ios" [translucent]="true" collapse="condense">
-    <ion-toolbar>
-      <ion-title>Bookings</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-header class="toolbar-ios" [translucent]="true" collapse="condense">
+  <ion-toolbar>
+    <ion-title>Bookings</ion-title>
+    <ion-buttons slot="end">
+
+      <ion-button [routerLink]="['/booking']">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true">
   <app-bookings></app-bookings>
