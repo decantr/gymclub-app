@@ -1,11 +1,19 @@
 import { Injectable } from '@angular/core';
+import { AppDB } from 'src/db';
 import { Booking } from '../models/booking';
+import { DatabaseService } from './database.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookingService {
-  constructor() { }
+  private db: AppDB;
+
+  constructor(
+    private databaseService: DatabaseService,
+  ) {
+    this.db = this.databaseService.db;
+  }
 
   public getNext(booking: Booking) {
     return this.getOpen(new Date());
@@ -34,5 +42,13 @@ export class BookingService {
     date.setDate(date.getDate() + 1)
     date.setHours(6);
     return date;
+  }
+
+  public async getAll(): Promise<Booking[]> {
+    return await this.db.bookings.toArray();
+  }
+  
+  public async addNew(booking: Booking) {
+    return await this.db.bookings.add(booking);
   }
 }

@@ -1,87 +1,18 @@
-<ion-list *ngIf="!newBooking.type && bookings.length > 0">
-  <ion-list-header>Existing Bookings</ion-list-header>
+<ion-list *ngIf="bookings.length > 0">
+  <ion-list-header>
+    Existing Bookings
+  </ion-list-header>
 
   <ion-card *ngFor="let b of bookings">
     <ion-card-header>
       <ion-item (click)="showBooking(b)" lines="none" class="ion-no-padding" detail>
         <ion-icon *ngIf="b.type === 'swim'" slot="start" name="water-outline"></ion-icon>
         <ion-icon *ngIf="b.type === 'instructor'" slot="start" name="people-outline"></ion-icon>
-        <ion-icon *ngIf="b.type === 'location'" slot="start" name="business-outline"></ion-icon>
-        <ion-label class="capitalize">{{b.type}}</ion-label>
+        <ion-icon *ngIf="b.type === 'location'" slot="start" name="business-outline"></ion-icon> <ion-label class="capitalize">{{b.type}}</ion-label>
         <ion-label class="capitalize">{{getHumanDate(b.date_from)}}</ion-label>
       </ion-item>
     </ion-card-header>
   </ion-card>
 </ion-list>
 
-<ion-list *ngIf="!newBooking.date_from">
-  <ion-list-header>Create New Booking</ion-list-header>
-  <div *ngIf="!newBooking.type">
-    <ion-card>
-      <ion-card-header>
-        <ion-item (click)="editBooking(null, 'type', 'swim')" lines="none" class="ion-no-padding" detail>
-          <ion-icon slot="start" name="water-outline"></ion-icon>
-          <ion-label>
-            Book a pool slot
-          </ion-label>
-        </ion-item>
-      </ion-card-header>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-header>
-        <ion-item (click)="editBooking(null, 'type', 'instructor')" lines="none" class="ion-no-padding" detail>
-          <ion-icon slot="start" name="people-outline"></ion-icon>
-          <ion-label>
-            Book with an Instructor
-          </ion-label>
-        </ion-item>
-      </ion-card-header>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-header>
-        <ion-item (click)="editBooking(null, 'type', 'location')" lines="none" class="ion-no-padding" detail>
-          <ion-icon slot="start" name="business-outline"></ion-icon>
-          <ion-label>
-            Book a Location
-          </ion-label>
-        </ion-item>
-      </ion-card-header>
-    </ion-card>
-  </div>
-  <div *ngIf="newBooking.type && 'swim'">
-    <ion-card>
-      <ion-item (change)="editBooking($event, 'date_from')" lines="none" class="ion-no-padding calander">
-        <ion-datetime [min]="min" [max]="" [(ngModel)]="now" locale="en-GB-u-hc-h14" minuteValues="00" hourValues="6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21">
-        </ion-datetime>
-      </ion-item>
-      <ion-button (click)="editBooking(null, 'date_from', now)">
-        <ion-icon slot="start" name="checkmark-outline"></ion-icon>
-        Book Now
-      </ion-button>
-    </ion-card>
-    <ion-card>
-      <ion-card-header>
-        <ion-item (click)="editBooking(null, 'date_from', 'next')" lines="none" class="ion-no-padding" detail>
-          <ion-icon slot="start" name="calendar-clear-outline"></ion-icon>
-          <ion-label>Next Available Slot</ion-label>
-        </ion-item>
-      </ion-card-header>
-    </ion-card>
-    <ion-button *ngIf="newBooking.type" (click)="editBooking(null, 'type', null)" expand="block">Back</ion-button>
-  </div>
-</ion-list>
-
-<ion-card *ngIf="newBooking.date_to">
-  <ion-card-header>
-    <ion-card-title>Confirm?</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <ion-label>Please confirm {{newBooking.type}} session for {{getHumanDate(newBooking.date_from)}} for an hour</ion-label>
-  </ion-card-content>
-  <!-- <div class="center-children">
-    <ion-button (click)="exportEvent()">Add to Calendar</ion-button>
-  </div> -->
-  <ion-button *ngIf="newBooking.date_from" (click)="finishBooking()" expand="block">Done</ion-button>
-</ion-card>
+<h1 *ngIf="!bookings.length">No Bookings!</h1>
